@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -24,7 +25,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(32.dp)
+            .testTag("login_screen"),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -33,7 +35,9 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             text = stringResource(R.string.login_title),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 48.dp)
+            modifier = Modifier
+                .padding(bottom = 48.dp)
+                .testTag("login_title")
         )
         
         // 用户名输入框
@@ -46,7 +50,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             label = { Text(stringResource(R.string.username_hint)) },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
+                .padding(bottom = 16.dp)
+                .testTag("username_field"),
             singleLine = true
         )
         
@@ -62,7 +67,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp),
+                .padding(bottom = 16.dp)
+                .testTag("password_field"),
             singleLine = true
         )
         
@@ -71,7 +77,9 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             Text(
                 text = errorMessage,
                 color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
+                    .testTag("error_message")
             )
         }
         
@@ -99,6 +107,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
+                .testTag("login_button")
         ) {
             Text(
                 text = stringResource(R.string.login_button),

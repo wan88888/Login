@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -21,7 +22,8 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(32.dp)
+            .testTag("home_screen"),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -30,7 +32,9 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
             text = stringResource(R.string.home_title),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 48.dp)
+            modifier = Modifier
+                .padding(bottom = 48.dp)
+                .testTag("home_title")
         )
         
         // 显示点击次数
@@ -38,7 +42,9 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
             text = "点击次数: $clickCount",
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 32.dp)
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .testTag("click_count_text")
         )
         
         // 点击按钮
@@ -48,6 +54,7 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
                 .fillMaxWidth()
                 .height(56.dp)
                 .padding(bottom = 16.dp)
+                .testTag("click_button")
         ) {
             Text(
                 text = stringResource(R.string.click_button),
@@ -61,7 +68,8 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 16.dp)
+                .testTag("reset_button"),
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.surface,
                 contentColor = MaterialTheme.colorScheme.primary
@@ -80,6 +88,7 @@ fun HomeScreen(onLogout: () -> Unit = {}) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
+                .testTag("logout_button")
         ) {
             Text(
                 text = stringResource(R.string.logout_button),
